@@ -7,7 +7,7 @@ export const requireSignIn = async (req,res,next) => {
             req.headers.authorization,
             process.env.JWT_SECRET
         );
-        req.user = decode;
+        req.userId = decode._id;
         next()
     } catch (error) {
         console.log(error)
@@ -18,3 +18,17 @@ export const requireSignIn = async (req,res,next) => {
 
     }
 }
+
+/*export const checkSameUser = async (req,res,next) => {
+    try {
+        const token = req.headers.authorization
+        if(!token){
+            return res.status(400).send({
+                error: "Token not found"
+            })
+        }
+        const decoded = JWT.verify(token, )
+    } catch (error) {
+        
+    }
+}*/

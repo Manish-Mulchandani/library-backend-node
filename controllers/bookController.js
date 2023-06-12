@@ -89,16 +89,24 @@ export const updateBookById = async (req,res) => {
     }
 }
 
-/*export const deleteBookById = async (req,res) => {
+export const deleteBookById = async (req,res) => {
     try {
         const bookId = req.params.id;
-        if(!mongoose.Types.ObjectId.isValid(id)) {
+        if(!mongoose.Types.ObjectId.isValid(bookId)) {
             return res.status(400).send({
                 message: "Invalid Book ID"
             })
         }
 
-        const deletedBook = await bookModel.
+        const deletedBook = await bookModel.findByIdAndRemove(bookId)
+        if(!deletedBook) {
+            return res.status(400).send({
+                message: "Book not found"
+            })
+        }
+        return res.status(200).send({
+            message: "Book deleted successfully"
+        })
 
     } catch (error) {
         console.log(error)
@@ -109,4 +117,3 @@ export const updateBookById = async (req,res) => {
         })
     }
 }
-*/
