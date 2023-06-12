@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import authRoute from "./routes/authRoute.js"
 import bookRoute from "./routes/bookRoute.js"
 import userRoute from "./routes/userRoute.js"
+import { rateLimitMiddleware } from "./middlewares/rateLimitMiddleware.js";
 
 // env configured
 dotenv.config();
@@ -18,6 +19,7 @@ const port = 3000
 // middlewares
 app.use(express.json()); // Can pass JSON in req and res
 app.use(morgan('dev'));  // Shows API calls when fn is running
+app.use(rateLimitMiddleware)
 
 // routes
 app.use('/auth', authRoute)

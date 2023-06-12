@@ -95,3 +95,25 @@ export const returnBookController = async (req,res) => {
     }
     
 }
+
+export const getUserBooksController = async (req,res) => {
+    try {
+        const userId = req.params.userId
+        const user = await userModel.findById(userId)
+        if(!user){
+            return res.status(400).send({
+                message: "User not found"
+            })
+        }
+        const borrowedBookIds = user.books.map(book => book.bookId)
+        const borrowedBooks = await bookModel.find({_id:{$in:borrowedBookIds}})
+        res.json({borrowedBooks})
+    } catch (error) {
+        console.log(error)
+        res.status(400).send({
+            message: "Something went wrong while getting books issues by user",
+            error
+        })
+    }
+    
+}

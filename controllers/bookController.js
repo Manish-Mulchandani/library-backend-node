@@ -63,7 +63,16 @@ export const updateBookById = async (req,res) => {
         const bookId = req.params.id;
         const updatedData = req.body;
         
-        const bookIndex = bookModel.findIndex((book)=>book.id===bookId);
+        const book = await bookModel.findByIdAndUpdate(bookId, updatedData, {new:true})
+        if(!book){
+            return res.status(400).send({
+                error: "Book not found"
+            })
+        }
+        res.status(200).send({
+            book
+        })
+        /*const bookIndex = bookModel.findIndex((book)=>book.id===bookId);
 
         if(bookIndex!==-1){
             bookModel[bookIndex] = {...bookModel[bookIndex], ...updatedData};
@@ -78,7 +87,7 @@ export const updateBookById = async (req,res) => {
                 success: false,
                 message: "Book not found",
             })
-        }
+        }-*/
     } catch (error) {
         console.log(error)
         res.status(500).send({
