@@ -8,8 +8,8 @@ import userRoute from "./routes/userRoute.js"
 import { rateLimitMiddleware } from "./middlewares/rateLimitMiddleware.js";
 
 /* Make a .env file
-MONGO_URL = {Write mongodb url}
-JWT_SECRET = {Write something random as JWT_SECRET, eg -> DSGOJF41412JAHDG}
+  MONGO_URL = {Write mongodb url}
+  JWT_SECRET = {Write something random as JWT_SECRET, eg -> DSGOJF41412JAHDG}
 */
 
 // env configured
