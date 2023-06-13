@@ -11,6 +11,6 @@ router.post('/register', registerController)
 router.post('/login', loginController)
 
 // test
-router.get('/test', requireSignIn, testController)
+//router.get('/test', requireSignIn, testController)
 
 export default router

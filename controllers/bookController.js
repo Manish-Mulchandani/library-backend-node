@@ -20,7 +20,7 @@ export const addBookController = async (req,res) => {
     try {
         const { title, author, genre, publicationDate, availabilityStatus } = req.body
         const newBook = await new bookModel({title,author,genre,publicationDate,availabilityStatus}).save()
-        res.status(201).send({
+        res.status(200).send({
             success:true,
             message: "Book Added Successfully",
             newBook,
@@ -72,22 +72,6 @@ export const updateBookById = async (req,res) => {
         res.status(200).send({
             book
         })
-        /*const bookIndex = bookModel.findIndex((book)=>book.id===bookId);
-
-        if(bookIndex!==-1){
-            bookModel[bookIndex] = {...bookModel[bookIndex], ...updatedData};
-            res.status(200).send({
-                success:true,
-                message: "Book Updated successfully",
-                book: bookModel[bookIndex],
-                updatedData
-            })
-        } else {
-            res.status(400).send({
-                success: false,
-                message: "Book not found",
-            })
-        }-*/
     } catch (error) {
         console.log(error)
         res.status(500).send({

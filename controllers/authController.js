@@ -29,7 +29,7 @@ export const registerController = async (req,res) => {
         //register user
         const hashedPassword = await hashPassword(password)
         const user = await new userModel({name,email,password:hashedPassword}).save()
-        res.status(201).send({
+        res.status(200).send({
             success:true,
             message: "User registered successfully",
             user,
@@ -60,7 +60,7 @@ export const loginController = async (req,res) => {
         // check user
         const user = await userModel.findOne({email})
         if(!user) {
-            return res.status(404).send({
+            return res.status(400).send({
                 success: false,
                 message: "Email not registered"
             })

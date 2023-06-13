@@ -6,12 +6,11 @@ const router = express.Router()
 // Get all Books
 router.get('/', getBooksController)
 
-// Add books
+// Add a book
 router.post('/', addBookController)
 
 // Get book by Id
 router.get('/:id', getBookById)
-
 
 // Update book by Id
 router.put('/:id', updateBookById)

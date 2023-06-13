@@ -1,6 +1,6 @@
 import JWT from "jsonwebtoken"
 
-// Protected Routes token base
+// Protected Routes token based
 export const requireSignIn = async (req,res,next) => {
     try {
         const decode = JWT.verify(
@@ -18,17 +18,3 @@ export const requireSignIn = async (req,res,next) => {
 
     }
 }
-
-/*export const checkSameUser = async (req,res,next) => {
-    try {
-        const token = req.headers.authorization
-        if(!token){
-            return res.status(400).send({
-                error: "Token not found"
-            })
-        }
-        const decoded = JWT.verify(token, )
-    } catch (error) {
-        
-    }
-}*/
