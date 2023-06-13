@@ -1,4 +1,5 @@
 ### To run this Server
+(Assuming Node.js and npm are installed)
 1. In the root directory, perform "npm install" to download npm packages.
 2. Make a .env file in root directory, inside that file, pass in two variables.
     1. MONGO_URL = {Insert Your MongoDB URL}
